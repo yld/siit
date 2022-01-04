@@ -1,8 +1,8 @@
 {
   "name": "siit-frontend-test",
   "version": "0.0.1",
-  "description": "Getaround Frontend Challenge",
-  "repository": "https://github.com/siit/jobs",
+  "description": "Siit Frontend Challenge",
+  "repository": "",
   "license": "MIT",
   "private": true,
   "scripts": {
