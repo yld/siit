@@ -55,9 +55,9 @@
     "website_url": "https://www.lever.co/",
     "logo_url": "https://www.lever.co/wp-content/uploads/2019/03/lever_rgb_logo_standard.svg",
     "price": {
-      "cost_per_user": 0,
+      "cost_per_user": 49,
       "flat_cost": 5000,
-      "nb_users_included": 0
+      "nb_users_included": 2
     }
   }, {
     "id": 7,
