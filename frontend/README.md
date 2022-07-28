@@ -21,7 +21,7 @@ We don't expect you to be a top-notch designer, but we want to see how you would
 
 You **must** use Typescript. 
 
-We would really prefer if your used **React**. If you plan on using something else (e.g. Vue, styled components, ...), you'll find info on how to set it up in [Parcel's documentation](https://en.parceljs.org/recipes.html).
+We would really prefer if you used **React**. If you plan on using something else (e.g. Vue, styled components, ...), you'll find info on how to set it up in [Parcel's documentation](https://en.parceljs.org/recipes.html).
 
 
 ## Sending Your Results
