@@ -13,9 +13,7 @@
 
 ## Pointers
 
-You can have a look at the higher levels, but please do the simplest thing that could work for the level you're currently solving.
-
-We are interested in seeing code that is clean, extensible and robust, so don't overlook edge cases.
+We are interested in seeing code that is clean, extensible and robust. The goal is to showcase your skillset so while we appreciate minimalism we also need to see what you can do.
 
 We don't expect you to be a top-notch designer, but we want to see how you would handle some styling of this app. Do not hesitate to take inspiration from Siit or anywhere else!
 
