@@ -19,7 +19,10 @@ We are interested in seeing code that is clean, extensible and robust, so don't 
 
 We don't expect you to be a top-notch designer, but we want to see how you would handle some styling of this app. Do not hesitate to take inspiration from Siit or anywhere else!
 
-This test is framework agnostic, feel free to stick to vanilla HTML/JS/CSS or go with anything else. If you plan on using something else (e.g. React, Vue, TypeScript, styled components, ...), you'll find info on how to set it up in [Parcel's documentation](https://en.parceljs.org/recipes.html).
+You **must** use Typescript. 
+
+We would really prefer if your used **React**. If you plan on using something else (e.g. Vue, styled components, ...), you'll find info on how to set it up in [Parcel's documentation](https://en.parceljs.org/recipes.html).
+
 
 ## Sending Your Results
 
@@ -60,3 +63,7 @@ You can use the route `GET /users.json?service_id=xxx` by replacing with the cor
 For each service, we want to see the monthly cost. Use the fields `price` on the `service.json` enpdoint to compute the monthly price as follow:
 
 - MONTHLY_COST = FLAT_COST + COST_PER_USER * (NB_USERS_USING_THE_SERVICE - NB_USERS_INCLUDED)
+
+### Level 5: Bonus
+
+Add a searchbar in order to filter users and services.
