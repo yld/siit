@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'date'
 
 # quick one liners, never fails
-expected_output_hash = JSON.parse(File.read('./data/expected_output.json'))
 input_hash = JSON.parse(File.read('./data/input.json'))
 
 class Options
@@ -12,7 +13,7 @@ class Options
 
   def find_by_rental_id(rental_id)
     @options.reduce([]) do |array, option|
-      array << (option['rental_id'] == rental_id ?  option['type'] : nil) # iteration can not do nothing
+      array << (option['rental_id'] == rental_id ? option['type'] : nil) # iteration can not do nothing
     end.compact
   end
 end
@@ -43,7 +44,7 @@ class RentalPayload
   end
 
   def number_of_days
-    ( Date.parse(@end_date) - Date.parse(@start_date)).to_i  + 1
+    (Date.parse(@end_date) - Date.parse(@start_date)).to_i + 1
   end
 
   def output
@@ -88,7 +89,7 @@ class RentalBalance
   # everything bemow could be private
 
   def rental_price
-    @rental_price ||= days_price(@number_of_days)  + @price_per_km * @distance
+    @rental_price ||= days_price(@number_of_days) + @price_per_km * @distance
   end
 
   def fees_part
@@ -159,12 +160,12 @@ class RentalBalance
 
   def days_price(days)
     price = 0
-    while days > 0
+    while days.positive?
       if days > 10
-        price += 0.5 * @price_per_day * (days -10)
+        price += 0.5 * @price_per_day * (days - 10)
         days = 10
       elsif days > 4
-        price += 0.7 * @price_per_day * (days -4)
+        price += 0.7 * @price_per_day * (days - 4)
         days = 4
       elsif days > 1
         price += 0.9 * @price_per_day * (days - 1)
@@ -183,18 +184,20 @@ options = Options.new(input_hash['options'])
 cars = Cars.new(input_hash['cars'])
 
 processed_input = {
- 'rentals' => input_hash['rentals'].map do |rental|
-    RentalPayload.output(
-      rental['id'],
-      cars.find_by_id(rental['car_id']),
-      rental["start_date"],
-      rental["end_date"],
-      rental["distance"],
-      options.find_by_rental_id(rental['id'])
-    )
-  end
+  'rentals' =>
+   input_hash['rentals'].map do |rental|
+     RentalPayload.output(
+       rental['id'],
+       cars.find_by_id(rental['car_id']),
+       rental['start_date'],
+       rental['end_date'],
+       rental['distance'],
+       options.find_by_rental_id(rental['id'])
+     )
+   end
 }
 
+# expected_output_hash = JSON.parse(File.read('./data/expected_output.json'))
 # if processed_input == expected_output_hash
 #   p "Succcess"
 # else
@@ -209,6 +212,3 @@ processed_input = {
 # end
 
 pp processed_input
-
-
-
