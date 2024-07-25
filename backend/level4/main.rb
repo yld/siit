@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'date'
 
 # quick one liners, never fails
-expected_output_hash = JSON.parse(File.read('./data/expected_output.json'))
 input_hash = JSON.parse(File.read('./data/input.json'))
 
 class RentalBalance
@@ -29,7 +30,7 @@ class RentalBalance
   end
 
   def rental_price
-    @rental_price ||= days_price(@number_of_days)  + @price_per_km * @distance
+    @rental_price ||= days_price(@number_of_days) + @price_per_km * @distance
   end
 
   def fees_part
@@ -86,12 +87,12 @@ class RentalBalance
 
   def days_price(days)
     price = 0
-    while days > 0
+    while days.positive?
       if days > 10
-        price += 0.5 * @price_per_day * (days -10)
+        price += 0.5 * @price_per_day * (days - 10)
         days = 10
       elsif days > 4
-        price += 0.7 * @price_per_day * (days -4)
+        price += 0.7 * @price_per_day * (days - 4)
         days = 4
       elsif days > 1
         price += 0.9 * @price_per_day * (days - 1)
@@ -106,22 +107,24 @@ class RentalBalance
 end
 
 processed_input = {
- 'rentals' => input_hash['rentals'].map do |rental|
-    car = input_hash['cars'].find { |car| car['id'] == rental['car_id'] }
-    # + 1 because all days inclusive
-    number_of_days = ( Date.parse(rental['end_date']) - Date.parse(rental["start_date"])).to_i  + 1
-    {
-      'id' => rental['id'],
-      'actions' => RentalBalance.summary(
-        number_of_days,
-        car['price_per_day'],
-        rental['distance'],
-        car['price_per_km']
-      )
-    }
-  end
+  'rentals' =>
+   input_hash['rentals'].map do |rental|
+     car = input_hash['cars'].find { |car_ietm| car_ietm['id'] == rental['car_id'] }
+     # + 1 because all days inclusive
+     number_of_days = (Date.parse(rental['end_date']) - Date.parse(rental['start_date'])).to_i + 1
+     {
+       'id' => rental['id'],
+       'actions' => RentalBalance.summary(
+         number_of_days,
+         car['price_per_day'],
+         rental['distance'],
+         car['price_per_km']
+       )
+     }
+   end
 }
 
+# expected_output_hash = JSON.parse(File.read('./data/expected_output.json'))
 # if processed_input == expected_output_hash
 #   p "Succcess"
 # else
@@ -136,4 +139,3 @@ processed_input = {
 # end
 
 pp processed_input
-
