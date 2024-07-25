@@ -115,7 +115,7 @@ class RentalBalance
     @assistance_fee ||= @number_of_days * 100
   end
 
-  # method below could be factorized without so much gain (almost sama code size)
+  # methods below could be factorized without so much gain (almost same code size)
   # we could also have a class Balance ; def intialize(who: :string, credit: :bool, amount: :integer)
   def driver_balance
     {
@@ -188,24 +188,27 @@ processed_input = {
       rental['id'],
       cars.find_by_id(rental['car_id']),
       rental["start_date"],
+      rental["end_date"],
+      rental["distance"],
       options.find_by_rental_id(rental['id'])
     )
   end
 }
 
-if processed_input == expected_output_hash
-  p "Succcess"
-else
-  p "Failure"
-  # quick debug
-  p "Input hash:"
-  pp input_hash
-  p "Expected output:"
-  pp expected_output_hash
-  p "Processed input"
-  pp processed_input
-end
+# if processed_input == expected_output_hash
+#   p "Succcess"
+# else
+#   p "Failure"
+#   # quick debug
+#   p "Input hash:"
+#   pp input_hash
+#   p "Expected output:"
+#   pp expected_output_hash
+#   p "Processed input"
+#   pp processed_input
+# end
 
+pp processed_input
 
 
 

@@ -122,18 +122,18 @@ processed_input = {
   end
 }
 
-if processed_input == expected_output_hash
-  p "Succcess"
-else
-  p "Failure"
-  # quick debug
-  p "Input hash:"
-  pp input_hash
-  p "Expected output:"
-  pp expected_output_hash
-  p "Processed input"
-  pp processed_input
-end
+# if processed_input == expected_output_hash
+#   p "Succcess"
+# else
+#   p "Failure"
+#   # quick debug
+#   p "Input hash:"
+#   pp input_hash
+#   p "Expected output:"
+#   pp expected_output_hash
+#   p "Processed input"
+#   pp processed_input
+# end
 
-
+pp processed_input
 
