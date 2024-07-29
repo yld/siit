@@ -97,15 +97,15 @@ class RentalBalance
   end
 
   def gps_fees
-    @gps_fees ||= @options.include?('gps') ? @number_of_days * 500 : 0 # readme says 5
+    @gps_fees ||= @options.include?('gps') ? @number_of_days * 500 : 0 
   end
 
   def baby_seat_fees
-    @baby_seat_fees ||= @options.include?('baby_seat') ? @number_of_days * 200 : 0 # readme says 2
+    @baby_seat_fees ||= @options.include?('baby_seat') ? @number_of_days * 200 : 0 
   end
 
   def additional_insurance_fees
-    @additional_insurance_fees ||= @options.include?('additional_insurance') ? @number_of_days * 1000 : 0 # readme says 10
+    @additional_insurance_fees ||= @options.include?('additional_insurance') ? @number_of_days * 1000 : 0 
   end
 
   def insurance_fee

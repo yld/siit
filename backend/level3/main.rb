@@ -34,7 +34,7 @@ def commission_fees(price, number_of_days)
   drivy_fee = fees_part - insurance_fee - assistance_fee
   {
     'insurance_fee' => insurance_fee,
-    'assistance_fee' => assistance_fee, # the readme says 1 not 100
+    'assistance_fee' => assistance_fee, 
     'drivy_fee' => drivy_fee
   }
 end
